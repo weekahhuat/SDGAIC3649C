@@ -1,0 +1,8 @@
+# Start from Jupyter's PySpark base image
+FROM jupyter/pyspark-notebook:latest
+
+# Install Python MySQL and MongoDB connectors
+RUN pip install \
+    mysql-connector-python \
+    pymongo \
+    hdfs
