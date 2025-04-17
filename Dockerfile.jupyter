@@ -1,8 +1,5 @@
-# Start from Jupyter's PySpark base image
-FROM jupyter/pyspark-notebook:latest
+FROM jupyter/pyspark-notebook
 
-# Install Python MySQL and MongoDB connectors
-RUN pip install \
-    mysql-connector-python \
-    pymongo \
-    hdfs
+# Install additional machine learning libraries
+RUN pip install --upgrade pip && \
+    pip install pandas numpy scikit-learn seaborn matplotlib

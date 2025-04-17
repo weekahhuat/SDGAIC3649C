@@ -1,13 +1,15 @@
+version: '3'
 services:
   datanode:
     container_name: datanode
     depends_on:
-    - namenode
+      - namenode
     environment:
-    - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
     image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
     volumes:
-    - hadoop_datanode:/hadoop/dfs/data
+      - hadoop_datanode:/hadoop/dfs/data
+
   jupyter:
     build:
       context: .
@@ -15,87 +17,49 @@ services:
     command: start-notebook.sh --NotebookApp.token=''
     container_name: jupyter
     depends_on:
-    - spark-master
-    - mysql
-    - mongodb
+      - spark-master
     image: custom-pyspark-notebook
     ports:
-    - 8888:8888
+      - 8888:8888
     volumes:
-    - ./notebooks:/home/jovyan/work
-  mongodb:
-    container_name: mongodb
-    environment:
-      MONGO_INITDB_ROOT_PASSWORD: Republic$01
-      MONGO_INITDB_ROOT_USERNAME: rpMongod
-    image: mongo:4.4
-    ports:
-    - 27020:27017
-    volumes:
-    - mongo_data:/data/db
-    - mongo_data:/data/db
-    - ./mongo-scripts:/scripts/mongodb
-  mysql:
-    container_name: mysql
-    environment:
-      MYSQL_DATABASE: republicdb
-      MYSQL_PASSWORD: Republic$01
-      MYSQL_ROOT_PASSWORD: Republic$01
-      MYSQL_USER: rpMySQL
-    image: mysql:5.7
-    ports:
-    - 3800:3306
-    volumes:
-    - mysql_data:/var/lib/mysql
-    - mysql_data:/var/lib/mysql
-    - ./sql-scripts:/scripts/mysql
+      - ./notebooks:/home/jovyan/work
+
   namenode:
     container_name: namenode
     environment:
-    - CLUSTER_NAME=test
+      - CLUSTER_NAME=test
     image: bde2020/hadoop-namenode:2.0.0-hadoop2.7.4-java8
     ports:
-    - 50070:50070
-    - 8020:8020
+      - 50070:50070
+      - 8020:8020
     volumes:
-    - hadoop_namenode:/hadoop/dfs/name
-  phpmyadmin:
-    container_name: phpmyadmin
-    depends_on:
-    - mysql
-    environment:
-      PMA_HOST: mysql
-      PMA_PASSWORD: Republic$01
-      PMA_USER: rpMySQL
-    image: phpmyadmin/phpmyadmin
-    ports:
-    - 8082:80
-    restart: always
+      - hadoop_namenode:/hadoop/dfs/name
+
   spark-master:
     container_name: spark-master
     depends_on:
-    - namenode
-    - datanode
+      - namenode
+      - datanode
     environment:
-    - INIT_DAEMON_STEP=setup_spark
-    - SPARK_MODE=master
+      - INIT_DAEMON_STEP=setup_spark
+      - SPARK_MODE=master
     image: bde2020/spark-master:2.4.0-hadoop2.7
     ports:
-    - 7077:7077
-    - 8080:8080
+      - 7077:7077
+      - 8080:8080
     volumes:
-    - ./jobs:/opt/spark-jobs
+      - ./jobs:/opt/spark-jobs
+
   spark-worker:
     container_name: spark-worker
     depends_on:
-    - spark-master
+      - spark-master
     environment:
-    - SPARK_MASTER=spark://spark-master:7077
+      - SPARK_MASTER=spark://spark-master:7077
     image: bde2020/spark-worker:2.4.0-hadoop2.7
     ports:
-    - 8081:8081
+      - 8081:8081
+
 volumes:
   hadoop_datanode: null
   hadoop_namenode: null
-  mongo_data: null
-  mysql_data: null
