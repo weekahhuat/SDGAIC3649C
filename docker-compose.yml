@@ -43,7 +43,7 @@ services:
       MYSQL_PASSWORD: Republic$01
       MYSQL_ROOT_PASSWORD: Republic$01
       MYSQL_USER: rpMySQL
-    image: mysql:5.7
+    image: mysql:8.0
     ports:
     - 3800:3306
     volumes:
