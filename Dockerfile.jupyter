@@ -3,7 +3,7 @@ FROM jupyter/pyspark-notebook
 USER root
 
 # Install Python packages
-RUN pip install pymongo mysql-connector-python matplotlib seaborn
+RUN pip install pymongo mysql-connector-python matplotlib seaborn xlsxwriter
 
 # Install MongoDB CLI tools (mongosh, mongofiles)
 RUN apt-get update && \
