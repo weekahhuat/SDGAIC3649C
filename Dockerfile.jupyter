@@ -1,4 +1,6 @@
-FROM jupyter/pyspark-notebook
+# FROM jupyter/pyspark-notebook
+FROM jupyter/pyspark-notebook:spark-3.4.1
+
 
 USER root
 
@@ -12,6 +14,15 @@ RUN pip install \
     matplotlib \
     seaborn \
     xlsxwriter
+
+# Create directory for JARs
+RUN mkdir -p /opt/jars
+
+# Download MongoDB Spark Connector compatible with Spark 3.4.1
+RUN wget https://repo1.maven.org/maven2/org/mongodb/spark/mongo-spark-connector_2.12/10.1.1/mongo-spark-connector_2.12-10.1.1.jar -P /opt/jars
+#  MySQL JDBC JAR (correct URL)
+RUN wget https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar -P /opt/jars
+
 
 RUN apt-get update && \
     apt-get install -y gnupg curl ca-certificates && \

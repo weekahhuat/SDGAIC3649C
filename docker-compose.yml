@@ -15,7 +15,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.jupyter
-    image: custom-pyspark-notebook
     container_name: jupyter
     command: start-notebook.sh --NotebookApp.token=''
     depends_on:
