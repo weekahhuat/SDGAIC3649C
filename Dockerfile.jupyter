@@ -18,10 +18,23 @@ RUN pip install \
 # Create directory for JARs
 RUN mkdir -p /opt/jars
 
-# Download MongoDB Spark Connector compatible with Spark 3.4.1
-RUN wget https://repo1.maven.org/maven2/org/mongodb/spark/mongo-spark-connector_2.12/10.1.1/mongo-spark-connector_2.12-10.1.1.jar -P /opt/jars
-#  MySQL JDBC JAR (correct URL)
-RUN wget https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar -P /opt/jars
+# -----------------------------------
+# ✅ Download and Copy MySQL JDBC Driver (dual location)
+# -----------------------------------
+RUN wget https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar -P /opt/jars && \
+    cp /opt/jars/mysql-connector-j-8.0.33.jar /usr/local/spark/jars/
+
+# -----------------------------------
+# ✅ Download and Copy Spark SQL JAR for Spark 3.4.1
+# -----------------------------------
+RUN wget https://repo1.maven.org/maven2/org/apache/spark/spark-sql_2.12/3.4.1/spark-sql_2.12-3.4.1.jar -P /opt/jars && \
+    cp /opt/jars/spark-sql_2.12-3.4.1.jar /usr/local/spark/jars/
+
+# -----------------------------------
+# ✅ MongoDB Spark Connector for Spark 3.4.1
+# -----------------------------------
+RUN wget https://repo1.maven.org/maven2/org/mongodb/spark/mongo-spark-connector_2.12/10.1.1/mongo-spark-connector_2.12-10.1.1.jar -P /opt/jars && \
+    cp /opt/jars/mongo-spark-connector_2.12-10.1.1.jar /usr/local/spark/jars/
 
 
 RUN apt-get update && \
