@@ -1,0 +1,42 @@
+DiplomaID,DiplomaCode,DiplomaName,SchoolID
+201,ASC01,"Diploma in Applied Chemistry",101
+202,ASC02,"Diploma in Biomedical Science",101
+203,ASC03,"Diploma in Biotechnology",101
+204,ASC04,"Diploma in Environmental Science",101
+205,ASC05,"Diploma in Marine Science and Aquaculture",101
+206,ASC06,"Diploma in Materials Science",101
+207,ASC07,"Diploma in Pharmaceutical Science",101
+208,ASC08,"Diploma in Urban Agricultural Technology",101
+209,BUS01,"Diploma in Business",102
+210,BUS02,"Diploma in Consumer Behaviour and Research",102
+211,BUS03,"Diploma in Human Resource Management with Psychology",102
+212,BUS04,"Diploma in Social Enterprise Management",102
+213,ENG01,"Diploma in Aerospace Engineering",103
+214,ENG02,"Diploma in Aviation Management",103
+215,ENG03,"Diploma in Electrical and Electronic Engineering",103
+216,ENG04,"Diploma in Engineering Design with Business",103
+217,ENG05,"Diploma in Engineering Systems and Management",103
+218,ENG06,"Diploma in Green Building Energy Management",103
+219,ENG07,"Diploma in Industrial and Operations Management",103
+220,ENG08,"Diploma in Renewable Energy Engineering",103
+221,HOS01,"Diploma in Customer Experience Management with Business",104
+222,HOS02,"Diploma in Hotel and Hospitality Management",104
+223,HOS03,"Diploma in Integrated Events Management",104
+224,HOS04,"Diploma in Restaurant and Culinary Operations",104
+225,INF01,"Diploma in Business Applications",105
+226,INF02,"Diploma in Business Information Systems",105
+227,INF03,"Diploma in Digital Design and Development",105
+228,INF04,"Diploma in Infocomm Security Management",105
+229,INF05,"Diploma in Information Technology",105
+230,INF06,"Diploma in Interactive and Digital Media",105
+231,INF07,"Diploma in Mobile Software Development",105
+232,INF08,"Diploma in Sonic Arts",105
+233,INF09,"Diploma in Media Production and Design",105
+234,INF10,"Diploma in Game Design",105
+235,INF11,"Diploma in Arts and Theatre Management",105
+236,INF12,"Diploma in Sports and Exercise Sciences",105
+237,INF13,"Diploma in Sports Coaching",105
+238,INF14,"Diploma in Sports and Leisure Management",105
+239,INF15,"Diploma in Health Services Management",105
+240,INF16,"Diploma in Health and Promotion",105
+241,INF17,"Diploma in Outdoor and Adventure Learning",105
