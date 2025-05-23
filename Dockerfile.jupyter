@@ -11,6 +11,7 @@ USER root
 RUN pip install \
     pymongo \
     mysql-connector-python \
+    sqlalchemy pymysql \
     matplotlib \
     seaborn \
     xlsxwriter
