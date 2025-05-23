@@ -14,7 +14,8 @@ RUN pip install \
     sqlalchemy pymysql \
     matplotlib \
     seaborn \
-    xlsxwriter
+    xlsxwriter \
+    pillow exifread
 
 # Create directory for JARs
 RUN mkdir -p /opt/jars
